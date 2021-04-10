@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<h2 class="my-4">{{ article.title }}</h2>
+<hr>
+<p>{{ article.created }} by {{ article.author }}</p>
+<hr>
+<p>{{ article.content|linebreaksbr }}</p>
+{% if user.is_authenticated %}
+    <hr>
+    <div class="d-flex mb-5">
+        <a class="btn btn-warning mr-2" href="{% url 'article_edit' article.id %}">編集する</a>
+        <a class="btn btn-danger" href="{% url 'article_delete' article.id %}">削除する</a>    
+    </div>
+{% endif %}
+
+{% endblock %}
