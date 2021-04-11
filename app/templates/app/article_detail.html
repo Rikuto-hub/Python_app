@@ -2,9 +2,13 @@
 
 {% block content %}
 <h2 class="my-4">{{ article.title }}</h2>
+<p>{{ article.category }}</p>
 <hr>
 <p>{{ article.created }} by {{ article.author }}</p>
 <hr>
+{% if article.image %}
+    <img src="{{article.image.url}}" alt="" class='card-img-top index-img rounded detail-img'>
+{% endif %}
 <p>{{ article.content|linebreaksbr }}</p>
 {% if user.is_authenticated %}
     <hr>
